@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<x-layout>
+    <x-slot:heading>
+        About Page
+    </x-slot:heading>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course 30 days Laravel</title>
-</head>
-
-<body>
-    <h1>About Page</h1>
-</body>
-
-</html>
+    <h1>Hello from the About Page !!!</h1>
+</x-layout>
