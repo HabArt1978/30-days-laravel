@@ -23,7 +23,9 @@
                             <div class="ml-10 flex items-baseline space-x-4">
                                 <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
                                 <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>
-                                <x-nav-link href="/contacts" :active="request()->is('contacts')">Contacts</x-nav-link>
+                                <x-nav-link href="/contacts"
+                                            :active="request()->is('contacts')"
+                                            type='button'>Contacts</x-nav-link>
                             </div>
                         </div>
                     </div>
