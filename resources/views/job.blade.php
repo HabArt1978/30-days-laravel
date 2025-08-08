@@ -6,7 +6,7 @@
     <h2 class='font-bold text-xl'>{{ mb_ucfirst($job['title']) }}</h2>
 
     <p class='text-lg font-medium text-gray-600'>
-        This job pays {{ $job['salary'] }} per year.
+        This job pays ${{ $job['salary'] }} per year.
     </p>
 
     <div class='w-full border border-b-2 border-gray-700 mt-6'></div>
