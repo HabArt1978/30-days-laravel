@@ -3,5 +3,5 @@
         Contacts Page
     </x-slot:heading>
 
-    <h1>Hello from the Contacts Page !!!</h1>
+    <p class='text-gray-300'>Hello from the Contacts Page !!!</p>
 </x-layout>

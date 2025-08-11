@@ -9,8 +9,8 @@
 </head>
 
 <body class="h-full">
-    <div class="min-h-full">
-        <nav class="bg-gray-800">
+    <div class="min-h-full flex flex-col">
+        <nav class="bg-gray-900">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="flex h-16 items-center justify-between">
                     <div class="flex items-center">
@@ -144,14 +144,14 @@
             </div>
         </nav>
 
-        <header class="bg-white shadow-sm">
+        <header class="shadow-lg bg-gray-700">
             <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold tracking-tight text-gray-900">
+                <h1 class="text-3xl font-bold tracking-tight text-gray-200">
                     {{ $heading }}</h1>
             </div>
         </header>
-        <main>
-            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <main class="bg-gray-800 flex-1">
+            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 ">
                 {{ $slot }}
             </div>
         </main>

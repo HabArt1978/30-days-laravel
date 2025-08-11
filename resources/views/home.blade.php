@@ -3,5 +3,5 @@
         Home Page
     </x-slot:heading>
 
-    <h1>Hello from the Home Page !!!</h1>
+    <p class='text-gray-300'>Hello from the Home Page !!!</p>
 </x-layout>
