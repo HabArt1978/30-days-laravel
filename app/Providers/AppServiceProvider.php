@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Exception;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +21,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Проверяем среду выполнения кода
+        $isProduction = $this->app->environment('production');
+        // Включает защиту во всех средах, кроме production
+        Model::preventLazyLoading(!$isProduction);
+
+        // Кастомизация ошибки (опционально)
+        Model::handleLazyLoadingViolationUsing(function ($model, $relation) {
+            $class = get_class($model);
+            throw new \Exception("Обнаружена ленивая загрузка: [{$relation}] в модели [{$class}] ID [{$model->getKey()}]");
+        });
     }
 }

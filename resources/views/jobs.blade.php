@@ -3,15 +3,20 @@
         Jobs Listings
     </x-slot:heading>
 
-    <ul>
+    <div class='flex flex-col gap-y-4'>
         @foreach ($jobs as $job)
-            <li class='mt-2 text-xl'>
-                <a href="/jobs/{{ $job['id'] }}"
-                   class='text-gray-300 hover:text-blue-500 hover:underline transition-all duration-300'>
-                    <strong>{{ mb_ucfirst($job['title']) }}:</strong> Pays ${{ $job['salary'] }} per
+            <a href="/jobs/{{ $job['id'] }}"
+               class='text-gray-300 text-xl block p-5 border-2 rounded-md border-gray-600 shadow-lg tracking-wider'>
+                <div class='text-blue-400'>
+                    {{ $job->employer->name }}
+                </div>
+
+                <div>
+                    <strong>{{ mb_ucfirst($job['title']) }}:</strong> Pays
+                    <span class='font-bold text-orange-400'>${{ $job['salary'] }}</span> per
                     year.
-                </a>
-            </li>
+                </div>
+            </a>
         @endforeach
-    </ul>
+    </div>
 </x-layout>

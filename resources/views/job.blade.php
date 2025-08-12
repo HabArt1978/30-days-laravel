@@ -3,11 +3,15 @@
         {{ mb_ucfirst($job['title']) }} vacancy
     </x-slot:heading>
 
-    <h2 class='font-bold text-xl text-gray-300'>{{ mb_ucfirst($job['title']) }}</h2>
+    <div class='tracking-wider'>
+        <h2 class='font-bold text-xl text-gray-300'>{{ mb_ucfirst($job['title']) }}</h2>
 
-    <p class='text-lg font-medium text-gray-400'>
-        This job pays <span class='text-gray-300'>${{ $job['salary'] }}</span> per year.
-    </p>
+        <p class='text-lg font-medium text-gray-400'>
+            This job pays <span class='text-gray-300'>${{ $job['salary'] }}</span> per year.
+        </p>
+    </div>
+
+
 
     <div class='w-full border border-b-2 border-gray-900 mt-6'></div>
 
