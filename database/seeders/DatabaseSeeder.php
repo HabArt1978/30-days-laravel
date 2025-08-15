@@ -15,8 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        Employer::factory(10)->create()->each(
-            fn($employer) => Job::factory(3)->create(['employer_id' => $employer->id])
-        );
+        $this->call(EmployersAndJobsSeeder::class);
+        $this->call(UserSeeder::class);
     }
 }
