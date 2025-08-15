@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full bg-gray-100">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -8,11 +8,11 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="h-full">
-    <div class="min-h-full flex flex-col">
-        <nav class="bg-gray-900">
-            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="flex h-16 items-center justify-between">
+<body class="min-h-[100vh] min-w-[100vh] bg-gray-800">
+    <div class="flex flex-col">
+        <nav class="bg-gray-900 h-[8vh] flex items-center">
+            <div class="w-full px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between">
                     <div class="flex items-center">
                         <div class="shrink-0">
                             <img class="size-8"
@@ -144,19 +144,17 @@
             </div>
         </nav>
 
-        <header class="shadow-lg bg-gray-700">
-            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <header class="flex items-center shadow-lg bg-gray-700 h-[10vh]">
+            <div class="mx-auto min-w-7xl px-4 py-6 sm:px-6 lg:px-8">
                 <h1 class="text-3xl font-bold tracking-wide text-gray-200">
-                    {{ $heading }}</h1>
+                    {{ $heading }}
+                </h1>
             </div>
         </header>
-        <main class="bg-gray-800 flex-1">
-            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 ">
-                {{ $slot }}
-            </div>
+        <main class="min-h-[80vh] flex flex-col mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+            {{ $slot }}
         </main>
     </div>
-
 </body>
 
 </html>
