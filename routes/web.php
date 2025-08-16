@@ -7,16 +7,37 @@ Route::get('/', function () {
 });
 
 Route::get('/jobs', function () {
-    $jobs = Job::with('employer')->paginate(12);
+    $jobs = Job::with('employer')->latest()->paginate(12);
 
-    return view('jobs', ['jobs' => $jobs]);
+    return view('jobs.index', ['jobs' => $jobs]);
+});
+
+// ! Выносим СЮДА!
+Route::get('/jobs/create', function () {
+    return view('jobs.create');
 });
 
 Route::get('/jobs/{id}', function ($id) {
     $job = Job::find($id);
 
-    return view('job', ['job' => $job]);
+    return view('jobs.show', ['job' => $job]);
+});
 
+// ! Важно, в данном варианте запрос воспринимается как ('/jobs/{id}')\ Для срабатывания его нужно разместить выше.
+// Route::get('/jobs/create', function () {
+//     dd('This is JOBS CREATE page!');
+// });
+
+Route::post('/jobs', function () {
+    // dd(request()->all());
+    // dd(request('title'));
+    Job::create([
+        'title' => request('title'),
+        'salary' => request('salary'),
+        'employer_id' => 1
+    ]);
+
+    return redirect('/jobs');
 });
 
 Route::view('/contacts', 'contacts');

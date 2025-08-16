@@ -151,7 +151,8 @@
                 </h1>
             </div>
         </header>
-        <main class="min-h-[80vh] flex flex-col mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+        <main
+              class="min-h-[80vh] w-full flex flex-col mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
             {{ $slot }}
         </main>
     </div>
