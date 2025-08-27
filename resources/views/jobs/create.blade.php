@@ -26,9 +26,15 @@
                                        type="text"
                                        name="title"
                                        placeholder="Add job title"
-                                       class="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6" />
+                                       class="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6"
+                                       required />
+
                             </div>
                         </div>
+
+                        @error('title')
+                            <span class='text-xs text-red-400 tracking-wider'>{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <div class="sm:col-span-4">
@@ -41,12 +47,18 @@
                                 <input id="salary"
                                        type="text"
                                        name="salary"
-                                       placeholder="$50,000 Per year"
-                                       class="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6" />
+                                       placeholder="50000"
+                                       class="block min-w-0 grow bg-transparent py-1.5 pr-3 pl-1 text-base text-white placeholder:text-gray-500 focus:outline-none sm:text-sm/6"
+                                       required />
                             </div>
                         </div>
                     </div>
+
+
                 </div>
+                @error('salary')
+                    <span class='text-xs text-red-400 tracking-wider'>{{ $message }}</span>
+                @enderror
             </div>
 
             <div class="mt-6 flex items-center justify-end gap-x-6">

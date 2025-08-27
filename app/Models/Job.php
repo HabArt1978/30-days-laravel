@@ -10,6 +10,8 @@ class Job extends Model
     protected $table = 'job_listings';
     protected $fillable = ['title', 'salary', 'employer_id'];
 
+    // protected $guarded = []; Отключение проверки разрешенных полей для записи в DB. В данном варианте $fillable не используется.
+
     public function employer()
     {
         return $this->belongsTo(Employer::class);
