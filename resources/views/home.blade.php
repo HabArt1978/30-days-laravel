@@ -1,7 +1,7 @@
 <x-layout>
-    <x-slot:heading>
+    <x-slot:pageHeading>
         Home Page
-    </x-slot:heading>
+    </x-slot:pageHeading>
 
     <p class='text-gray-300'>Hello from the Home Page !!!</p>
 </x-layout>

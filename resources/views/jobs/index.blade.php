@@ -1,7 +1,12 @@
 <x-layout>
-    <x-slot:heading>
-        Jobs Listings
-    </x-slot:heading>
+    <x-slot:pageHeading>
+        <h1 class='text-3xl font-bold tracking-wide text-gray-200'>Jobs Listings</h1>
+
+        <a href='/jobs/create'
+           class="rounded-md px-3 py-2 bg-blue-400 text-sm font-semibold text-white outline-0 hover:outline-1 hover:outline-white tracking-wider uppercase">
+            create job
+        </a>
+    </x-slot:pageHeading>
 
     <div class="pb-6">
         {{ $jobs->links() }}

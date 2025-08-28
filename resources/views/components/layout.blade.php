@@ -23,9 +23,9 @@
                             <div class="ml-10 flex items-baseline space-x-4">
                                 <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
                                 <x-nav-link href="/jobs" :active="request()->is('jobs')">Jobs</x-nav-link>
-                                <x-nav-link href="/jobs/create" :active="request()->is('jobs/create')">
+                                {{-- <x-nav-link href="/jobs/create" :active="request()->is('jobs/create')">
                                     Create job
-                                </x-nav-link>
+                                </x-nav-link> --}}
                                 <x-nav-link href="/contacts" :active="request()->is('contacts')">Contacts</x-nav-link>
 
                             </div>
@@ -149,12 +149,12 @@
         </nav>
 
         <header class="flex items-center shadow-lg bg-gray-700 h-[10vh]">
-            <div class="mx-auto min-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold tracking-wide text-gray-200">
-                    {{ $heading }}
-                </h1>
+            <div
+                 class="flex justify-between mx-auto min-w-7xl px-4 py-6 sm:px-6 lg:px-8 text-3xl font-bold tracking-wide text-gray-200">
+                {{ $pageHeading }}
             </div>
         </header>
+
         <main
               class="min-h-[80vh] w-full flex flex-col mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
             {{ $slot }}
