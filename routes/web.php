@@ -1,82 +1,30 @@
 <?php
+use App\Http\Controllers\JobController;
 use App\Models\Job;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-});
-
+Route::view('/', 'home');
 Route::view('/contacts', 'contacts');
 
-Route::get('/jobs', function () {
-    $jobs = Job::with('employer')->latest()->paginate(12);
+Route::resource('jobs', JobController::class);
 
-    return view('jobs.index', ['jobs' => $jobs]);
-});
+// Route::get('/jobs', [JobController::class, 'index']);
+// Route::get('/jobs/create', [JobController::class, 'create']);
+// Route::get('/jobs/{job}', [JobController::class, 'show']);
+// Route::post('/jobs', [JobController::class, 'store']);
+// Route::get('/jobs/{job}/edit', [JobController::class, 'edit']);
+// Route::patch('/jobs/{id}', [JobController::class, 'update']);
+// Route::delete('/jobs/{id}', [JobController::class, 'destroy']);
 
-// ! Выносим СЮДА!
-Route::get('/jobs/create', function () {
-    return view('jobs.create');
-});
-
-Route::get('/jobs/{id}', function ($id) {
-    $job = Job::findOrFail($id);
-
-    return view('jobs.show', ['job' => $job]);
-});
-
-// ! Важно, в данном варианте запрос воспринимается как ('/jobs/{id}')\ Для срабатывания его нужно разместить выше.
-// Route::get('/jobs/create', function () {
-//     dd('This is JOBS CREATE page!');
+// Route::controller(JobController::class)->group(function () {
+//     Route::get('/jobs', 'index');
+//     Route::get('/jobs/create', 'create');
+//     Route::get('/jobs/{job}', 'show');
+//     Route::post('/jobs', 'store');
+//     Route::get('/jobs/{job}/edit', 'edit');
+//     Route::patch('/jobs/{job}', 'update');
+//     Route::delete('/jobs/{job}', 'destroy');
 // });
-
-Route::post('/jobs', function () {
-    request()->validate(
-        [
-            'title' => 'required|string|min:3|max:150',
-            'salary' => 'required|string|min:4|max:100'
-        ]
-    );
-    // dd(request()->all());
-    // dd(request('title'));
-    Job::create([
-        'title' => request('title'),
-        'salary' => request('salary'),
-        'employer_id' => 1
-    ]);
-
-    return redirect('/jobs');
-});
-
-Route::get('/jobs/{id}/edit', function ($id) {
-    $job = Job::findOrFail($id);
-
-    return view('jobs.edit', ['job' => $job]);
-});
-
-Route::patch('/jobs/{id}', function ($id) {
-    request()->validate([
-        'title' => 'required|string|min:3|max:150',
-        'salary' => 'required|string|min:4|max:100'
-    ]);
-
-    $job = Job::findOrFail($id);
-
-    $job->update([
-        'title' => request('title'),
-        'salary' => request('salary'),
-    ]);
-
-    return redirect("/jobs/{$job->id}");
-});
-
-Route::delete('/jobs/{id}', function ($id) {
-    $job = Job::findOrFail($id);
-
-    $job->delete();
-
-    return redirect("/jobs");
-});
 
 
 
