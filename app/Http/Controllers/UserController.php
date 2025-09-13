@@ -13,7 +13,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return response()->json(User::all());
+        // return response()->json(User::all());
     }
 
     /**
@@ -21,7 +21,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return csrf_token();
+        // return csrf_token();
     }
 
     /**
@@ -29,23 +29,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make(data: $request->all(), rules: [
-            'email' => ['required', 'email'],
-            'password' => 'required',
-            'name' => 'required'
-        ]);
-        if ($validator->fails()) {
-            return response(content: "Invalid data", status: 422);
-        }
-
-        $validatedData = $validator->getData();
-        $user = User::create([
-            'email' => $validatedData['email'],
-            'password' => $validatedData['password'],
-            'name' => $validatedData['name'],
-        ]);
-
-        return response()->json($user, status: 201);
+        //
     }
 
     /**
