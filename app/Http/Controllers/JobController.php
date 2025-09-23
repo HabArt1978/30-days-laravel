@@ -4,10 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Job;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class JobController extends Controller
+class JobController extends Controller implements HasMiddleware
 {
+    public static function middleware(): array
+    {
+        return [
+            new Middleware('auth', only: ['edit', 'update', 'destroy']),
+            new Middleware('can:edit-job,job', only: ['edit', 'update', 'destroy']),
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -58,8 +67,6 @@ class JobController extends Controller
      */
     public function edit(Job $job)
     {
-        Gate::authorize('edit-job', $job);
-
         return view('jobs.edit', compact('job'));
     }
 
