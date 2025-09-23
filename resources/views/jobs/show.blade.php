@@ -16,7 +16,7 @@
     <div class='w-full border border-b-2 border-gray-900 mt-6'></div>
 
     <div class='flex justify-between'>
-        @can('edit-job', $job)
+        @can('edit', $job)
             <div
                  class='uppercase font-medium text-gray-300 w-fit border-2 border-green-800 mt-6 rounded-lg px-4 py-1 hover:bg-green-800 hover:text-white transition-colors duration-150'>
                 <a href="/jobs/{{ $job->id }}/edit">edit job</a>

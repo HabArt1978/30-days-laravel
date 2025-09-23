@@ -34,9 +34,5 @@ class AppServiceProvider extends ServiceProvider
             $class = get_class($model);
             throw new \Exception("Обнаружена ленивая загрузка: [{$relation}] в модели [{$class}] ID [{$model->getKey()}]");
         });
-
-        Gate::define('edit-job', function (User $user, Job $job) {
-            return $job->employer->user->is($user);
-        });
     }
 }
