@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Password;
 
 class RegisterUserController extends Controller
@@ -22,19 +23,16 @@ class RegisterUserController extends Controller
             'email' => ['required', 'email', 'max:265'],
             'password' => ['required', Password::min(8)->letters()->numbers(), 'confirmed'],
         ]);
+
         // создание нового пользователя
-        $newUser = User::create($validatedAttributes);
+        $newUser = DB::transaction(function () use ($validatedAttributes) {
+            $newUser = User::create($validatedAttributes);
+            $newUser->employer()->create([
+                'name' => "{$validatedAttributes['first_name']} {$validatedAttributes['last_name']}",
+            ]);
 
-        // // создание нового пользователя
-        //     $newUser = DB::transaction(function () use ($validatedAttributes) {
-        //         $newUser = User::create($validatedAttributes);
-        //         $newUser->employer()->create([
-        //             'name' => "{$validatedAttributes['first_name']} {$validatedAttributes['last_name']}",
-        //             'user_id' => "{$newUser->id}" // моя приписка
-        //         ]);
-        //         return $newUser;
-        //     });
-
+            return $newUser;
+        });
 
         // вход пользователя в систему
         Auth::login($newUser);
