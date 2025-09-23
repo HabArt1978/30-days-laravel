@@ -24,6 +24,18 @@ class RegisterUserController extends Controller
         ]);
         // создание нового пользователя
         $newUser = User::create($validatedAttributes);
+
+        // // создание нового пользователя
+        //     $newUser = DB::transaction(function () use ($validatedAttributes) {
+        //         $newUser = User::create($validatedAttributes);
+        //         $newUser->employer()->create([
+        //             'name' => "{$validatedAttributes['first_name']} {$validatedAttributes['last_name']}",
+        //             'user_id' => "{$newUser->id}" // моя приписка
+        //         ]);
+        //         return $newUser;
+        //     });
+
+
         // вход пользователя в систему
         Auth::login($newUser);
         // redirect

@@ -28,14 +28,25 @@
                         </div>
                     </div>
                     <div class="hidden md:block">
-                        <div class="ml-4 flex items-center md:ml-6">
+                        <div class="ml-4 flex items-center md:ml-6 gap-4">
                             @auth
-                                <x-nav-link href=''>Logout</x-nav-link>
+                                <div class='text-white'>
+                                    <span>
+                                        user :
+                                    </span>
+                                    {{ Auth::user()->email }}
+                                    (<span> id : {{ Auth::user()->id }} </span>)
+                                </div>
+
+                                <form method='POST' action='/logout'>
+                                    @csrf
+                                    <x-form.button>Logout</x-form.button>
+                                </form>
                             @endauth
 
                             @guest()
-                                <x-nav-link href=''>Login</x-nav-link>
-                                <x-nav-link href='/register'>Register</x-nav-link>
+                                <x-nav-link href='/login' :active="request()->is('login')">Login</x-nav-link>
+                                <x-nav-link href='/register' :active="request()->is('register')">Register</x-nav-link>
                             @endguest
                         </div>
                     </div>
