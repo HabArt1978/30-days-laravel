@@ -4,19 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Job;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controllers\HasMiddleware;
-use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Support\Facades\Gate;
 
-class JobController extends Controller implements HasMiddleware
+class JobController extends Controller
 {
-    public static function middleware(): array
-    {
-        return [
-            new Middleware('auth', only: ['edit', 'update', 'destroy']),
-            new Middleware('can:edit-job,job', only: ['edit', 'update', 'destroy']),
-        ];
-    }
-
     /**
      * Display a listing of the resource.
      */
